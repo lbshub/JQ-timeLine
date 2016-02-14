@@ -34,4 +34,4 @@ a{text-decoration: none;-webkit-transition:all 0.3s ease-out;-moz-transition:all
 .data_list p{float: left;width: 49.5%;height:25px;line-height:25px;font-size: 14px;color: #666;}
 .data_list:hover{border-color:#2A95DD!important; background: #f9f9f9;}
 
-#addMore{text-align: center;}
+#addMore{display: none; text-align: center;}

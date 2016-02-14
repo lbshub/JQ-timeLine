@@ -19,7 +19,7 @@
  * this.length //总的时间点个数
  * this.$datesBox //时间容器
  * this.$contentsBox //内容容器
- * this.update ) //时间和内容有变化 更新this.length
+ * this.update() //时间和内容有变化 更新this.length
  * ====================================================
  **/
 
