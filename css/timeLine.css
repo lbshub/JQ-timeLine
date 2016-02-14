@@ -1,0 +1,37 @@
+*{margin:0;padding:0;}
+body{font-family:"Microsoft Yahei";color:#000;font-size:14px;}
+ul,li{list-style:none;}
+a{text-decoration: none;-webkit-transition:all 0.3s ease-out;-moz-transition:all 0.3s ease-out;transition:all 0.3s ease-out;}
+
+#timeline{width:765px;height:300px;margin: 10px auto;overflow:hidden;position:relative;background:url('../images/dot.png') 150px top repeat-y;}
+
+#dates{width:165px;height:300px;overflow:hidden;position: absolute;left:0;top:0;}
+#dates li{list-style:none;width:135px;padding-right:30px;height:60px;line-height:60px;text-align:right;position: relative;}
+#dates li a{: inline-block;width: 135px;color:#000;text-decoration:none;font-size:16px;padding-rightdisplay:30px; }
+#dates li a span{display:inline-block;width: 25px;height: 25px;line-height: 25px; text-align: center; font-size: 14px;color: #fff;position: absolute;right: 0;top:50%;margin-top:-13px;background:url('../images/biggerdot.png') 50% 50% no-repeat;transition:all 0.3s ease-out;}
+#dates li.active a, #dates li a:hover{font-size:20px; color: #F00;}
+#dates li.active a span, #dates li a:hover span{background:url('../images/biggerdot2.png') 50% 50% no-repeat;}
+
+#contents{width:600px;height:300px;overflow:hidden;position:absolute;top:0;left:165px;}
+#contents li {width:580px; padding:0 10px;height:300px;overflow-y:auto;}
+#contents li {transition:all 0.3s ease-out; opacity: 0;}
+#contents li.active {opacity: 1;}
+#contents li div{transition:all 0.3s ease-out;opacity:0;transform:scale(0.5,0.5);}
+#contents li.active div{opacity:1;transform:scale(1,1); }
+#contents li .mtop0{margin-top: 0;}
+
+#next,#prev{display:block;position:absolute;left:55%;z-index: 99;font-size:70px;width:38px;height:22px;background-repeat:no-repeat;text-indent:-9999px;overflow:hidden;}
+#next{bottom:0;background-image:url('../images/next_v.png');background-position:0 -44px;}
+#prev{top:0;background-image:url('../images/prev_v.png');background-position:0 0;}
+#next.disabled,#prev.disabled{opacity:0.2;}
+#prev:hover{background-position:0 -44px;}
+#next:hover{background-position:0 0;}
+
+.data_list{padding:3px 10px 8px; margin: 95px 0 10px; min-height:100px; position: relative; background: #fff; border: 4px solid #949EA7; border-width: 4px 1px 1px 1px; transition:all 0.5s ease-out;}
+.data_list h2{clear: both;height:30px;line-height:30px;font-size: 16px;}
+.data_list h2 a{color: #333;}
+.data_list h2 a:hover{color: #F00;}
+.data_list p{float: left;width: 49.5%;height:25px;line-height:25px;font-size: 14px;color: #666;}
+.data_list:hover{border-color:#2A95DD!important; background: #f9f9f9;}
+
+#addMore{text-align: center;}

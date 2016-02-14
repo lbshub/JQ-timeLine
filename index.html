@@ -1,0 +1,180 @@
+<!doctype html>
+<head>
+	<meta charset="utf-8">
+	<title>时间轴</title>
+	<link rel="stylesheet" href="css/timeLine.css">
+	<script src="js/jquery.min.js"></script>
+	<script src="js/timeLine.js"></script>
+	<script>
+		$(function(){
+			var	timeline = new timeLine({
+				end: function(){
+					timeline.index == timeline.length-1 ? $('#addMore').fadeIn() : $('#addMore').fadeOut();
+				}
+			});
+			function contentsHTML(html){
+				var htmlstr = '<li>\
+						<div class="data_list">\
+							<h2><a href="#">'+ html +'</a></h2>\
+							<p>应收日期：2015-08-10</p>\
+							<p>贷款号: 20150500010</p>\
+							<p>第几期/总期数: 1/1</p>\
+							<p>应收总额: 7000</p>\
+							<p>应收本金: 7000</p>\
+							<p>应收利息: 90</p>\
+						</div>\
+					</li>';
+				return htmlstr;
+			}
+			$('#addMore').click(function(e) {
+				e.preventDefault();
+				$.ajax({
+				   url: "more.php?"+ "length=" + timeline.length,
+				   dataType: 'json',
+				   beforeSend: function(){
+				   		$('#addMore').html('加载中...');
+				   },
+				   error: function(){
+				   		$('#addMore').html('加载出错，点击重新加载');
+				   },
+				   success: function(data){
+				   		var dates = data.dates, contents = data.contents;
+				   		var dateshtml = '', contentshtml = '';
+				   		$.each(dates, function(i,o){
+				   			dateshtml += '<li><a href="#"><span>'+ (timeline.length+1+i) +'</span>'+ o +'</a></li>';
+				   		});
+				   		$.each(contents, function(i,o){
+				   			contentshtml += contentsHTML(o);
+				   		});
+				   		$(dateshtml).appendTo(timeline.$datesBox);
+				   		$(contentshtml).appendTo(timeline.$contentsBox);
+				   		timeline.update();
+				   		$('#addMore').html('点击继续加载').hide();
+				   }
+				});
+			});
+		});
+	</script>
+</head>
+<body>
+	<div style="height: 300px;"></div>
+	<div id="timeline">
+		<ul id="dates">
+			<li><a href="#"><span>1</span>2015-08-10</a></li>
+			<li><a href="#"><span>2</span>2015-06-10</a></li>
+			<li><a href="#"><span>3</span>2015-05-06</a></li>
+			<li><a href="#"><span>4</span>2015-03-10</a></li>
+			<li><a href="#"><span>5</span>2015-02-10</a></li>
+			<li><a href="#"><span>6</span>2015-01-20</a></li>
+		</ul>
+		<ul id="contents">
+			<li>
+				<div class="data_list">
+					<h2><a href="#">标的标题标题标题</a></h2>
+					<p>应收日期：2015-08-10</p>
+					<p>贷款号: 20150500010</p>
+					<p>第几期/总期数: 1/1</p>
+					<p>应收总额: 7000</p>
+					<p>应收本金: 7000</p>
+					<p>应收利息: 90</p>
+				</div>
+			</li>
+			<li>
+				<div class="data_list mtop0">
+					<h2><a href="#">标的标题标题标题</a></h2>
+					<p>应收日期：2015-08-10</p>
+					<p>贷款号: 20150500010</p>
+					<p>第几期/总期数: 1/1</p>
+					<p>应收总额: 7000</p>
+					<p>应收本金: 7000</p>
+					<p>应收利息: 90</p>
+				</div>
+				<div class="data_list mtop0">
+					<h2><a href="#">标的标题标题标题</a></h2>
+					<p>应收日期：2015-08-10</p>
+					<p>贷款号: 20150500010</p>
+					<p>第几期/总期数: 1/1</p>
+					<p>应收总额: 7000</p>
+					<p>应收本金: 7000</p>
+					<p>应收利息: 90</p>
+				</div>
+			</li>
+			<li>
+				<div class="data_list mtop0">
+					<h2><a href="#">标的标题标题标题</a></h2>
+					<p>应收日期：2015-08-10</p>
+					<p>贷款号: 20150500010</p>
+					<p>第几期/总期数: 1/1</p>
+					<p>应收总额: 7000</p>
+					<p>应收本金: 7000</p>
+					<p>应收利息: 90</p>
+				</div>
+				<div class="data_list mtop0">
+					<h2><a href="#">标的标题标题标题</a></h2>
+					<p>应收日期：2015-08-10</p>
+					<p>贷款号: 20150500010</p>
+					<p>第几期/总期数: 1/1</p>
+					<p>应收总额: 7000</p>
+					<p>应收本金: 7000</p>
+					<p>应收利息: 90</p>
+				</div>
+			</li>
+			<li>
+				<div class="data_list">
+					<h2><a href="#">标的标题标题标题</a></h2>
+					<p>应收日期：2015-08-10</p>
+					<p>贷款号: 20150500010</p>
+					<p>第几期/总期数: 1/1</p>
+					<p>应收总额: 7000</p>
+					<p>应收本金: 7000</p>
+					<p>应收利息: 90</p>
+				</div>
+			</li>
+			<li>
+				<div class="data_list mtop0">
+					<h2><a href="#">标的标题标题标题</a></h2>
+					<p>应收日期：2015-08-10</p>
+					<p>贷款号: 20150500010</p>
+					<p>第几期/总期数: 1/1</p>
+					<p>应收总额: 7000</p>
+					<p>应收本金: 7000</p>
+					<p>应收利息: 90</p>
+				</div>
+				<div class="data_list mtop0">
+					<h2><a href="#">标的标题标题标题</a></h2>
+					<p>应收日期：2015-08-10</p>
+					<p>贷款号: 20150500010</p>
+					<p>第几期/总期数: 1/1</p>
+					<p>应收总额: 7000</p>
+					<p>应收本金: 7000</p>
+					<p>应收利息: 90</p>
+				</div>
+				<div class="data_list mtop0">
+					<h2><a href="#">标的标题标题标题</a></h2>
+					<p>应收日期：2015-08-10</p>
+					<p>贷款号: 20150500010</p>
+					<p>第几期/总期数: 1/1</p>
+					<p>应收总额: 7000</p>
+					<p>应收本金: 7000</p>
+					<p>应收利息: 90</p>
+				</div>
+			</li>
+			<li>
+				<div class="data_list">
+					<h2><a href="#">标的标题标题标题</a></h2>
+					<p>应收日期：2015-08-10</p>
+					<p>贷款号: 20150500010</p>
+					<p>第几期/总期数: 1/1</p>
+					<p>应收总额: 7000</p>
+					<p>应收本金: 7000</p>
+					<p>应收利息: 90</p>
+				</div>
+			</li>
+		</ul>
+		<a href="#" id="next">+</a>
+		<a href="#" id="prev">-</a>
+	</div>
+	<div id="addMore">点击加载更多</div>
+	<div style="height: 300px;"></div>		
+</body>
+</html>
